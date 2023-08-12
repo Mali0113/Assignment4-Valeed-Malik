@@ -1,0 +1,27 @@
+## Server
+server:
+  port: 9001
+
+## MySQL
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:8889/twitter?serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: root
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: 1c9fd2c2d72d18bb4c87
+            clientSecret: ac54a9a6cbaf656c355be015282a281994d56a26
+            redirectUri: http://localhost:9000/login/oauth2/code/github
+            scope: read:user
+
+ums:
+  host: http://localhost
+  port: 9000
+  paths:
+    user: /users/user
+

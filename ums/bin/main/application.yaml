@@ -1,0 +1,26 @@
+## Server
+server:
+  port: 9000
+
+## MySQL
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:8889/ums?serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: root
+    password: root
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: 1c9fd2c2d72d18bb4c87
+            clientSecret: d8e49f604f99c25079fdfaad63ce709c4a76210e
+            redirectUri: http://localhost:9000/login/oauth2/code/github
+        provider:
+          github:
+            authorization-uri: https://github.com/login/oauth/authorize
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+            user-name-attribute: login
+

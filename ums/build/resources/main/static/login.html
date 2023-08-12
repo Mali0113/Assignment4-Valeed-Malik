@@ -1,0 +1,29 @@
+<div class="container unauthenticated">
+    With GitHub: <a href="/login/github">click here</a>
+</div>
+<div class="container authenticated" style="display:none">
+    Logged in as: <span id="user"></span><br>
+    Email: <span id="email">Null</span><br>
+    Jwt Token: <span id="jwt">Null</span><br>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+    console.log("hello");
+    $.get("/user", function(data) {
+        if(data.name == null){
+            $(".unauthenticated").show();
+            $(".authenticated").hide();
+            return;
+        }
+        console.log(data);
+        $("#user").html(data.name);
+        $("#email").html(data.email);
+        $("#jwt").html(data.jwtToken);
+        $(".unauthenticated").hide();
+        $(".authenticated").show();
+
+    });
+});
+
+</script>
